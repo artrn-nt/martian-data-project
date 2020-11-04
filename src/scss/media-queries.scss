@@ -1,0 +1,42 @@
+$lg-screen: 1920px;
+$md-screen: 1440px; // 15 inches
+$sm-screen: 1280px; // 13 inches
+$breakpoint: 1225px;
+$tablet: 768px;
+$phone: 462px;
+
+@mixin lg-screen {
+  @media only screen and (max-width: #{$lg-screen}) {
+    @content;
+  }
+}
+
+@mixin md-screen {
+  @media only screen and (max-width: #{$md-screen}) {
+    @content;
+  }
+}
+
+@mixin sm-screen {
+  @media only screen and (max-width: #{$sm-screen}) {
+    @content;
+  }
+}
+
+@mixin breakpoint {
+  @media only screen and (max-width: #{$breakpoint}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media only screen and (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin phone {
+  @media only screen and (max-width: #{$phone}) {
+    @content;
+  }
+}

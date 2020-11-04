@@ -1,0 +1,146 @@
+@import '../../config.scss';
+@import '../../media-queries.scss';
+
+.cards-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  grid-column: span 2;
+  // background-color: paleturquoise;
+
+  @include breakpoint {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 1.05rem 0;
+  }
+
+  @include phone {
+    flex-wrap: nowrap;
+    flex-direction: column;
+  }
+
+  .weather-card {
+    min-width: 152px;
+    max-width: 152px;
+    height: calc(100% - 2.1rem);
+    max-height: 177.6px;
+    margin: 0 13px;
+    border: 1.4px solid $bright;
+    border-radius: 0.3rem;
+    background-color: transparentize($color: $sec-bg-color, $amount: 0.725);
+    box-shadow: 3px 3px 4px $prim-bg-color;
+    color: $bright;
+    cursor: default;
+
+    &:first-of-type {
+      margin-left: auto;
+    }
+
+    &:last-of-type {
+      margin-right: auto;
+    }
+
+    @include breakpoint {
+      margin: 13px;
+      height: 165px;
+      min-width: 156px;
+      max-width: 156px;
+
+      &:first-of-type {
+        margin-left: 13px;
+      }
+
+      &:last-of-type {
+        margin-right: 13px;
+      }
+    }
+
+    .date {
+      position: relative;
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 33%;
+      border-radius: 0.3rem 0.3rem 0 0;
+      font-size: 0.95rem;
+
+      @include tablet {
+        font-size: 0.9rem;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        display: block;
+        width: 75%;
+        height: 1px;
+        background-color: $bright;
+      }
+    }
+
+    .measures {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 67%;
+      padding: 0 0.4rem;
+      border-radius: 0 0 0.3rem 0.3rem;
+
+      .value-field {
+        position: relative;
+        display: flex;
+        align-items: center;
+        font-size: 0.925rem;
+        text-align: center;
+
+        @include tablet {
+          font-size: 0.875rem;
+        }
+
+        .chip {
+          position: absolute;
+          top: 9px;
+          left: -12.5px;
+          display: block;
+          height: 0.4rem;
+          width: 0.4rem;
+          transform: rotate(45deg);
+
+          @include tablet {
+            left: -11px;
+            width: 0.35rem;
+            height: 0.35rem;
+          }
+
+          &.av {
+            background-color: #f7f6f2;
+          }
+
+          &.min {
+            background-color: #57a2c3;
+          }
+
+          &.max {
+            background-color: #e77920;
+          }
+        }
+
+        .value {
+          margin-left: 5px;
+          font-size: 0.9rem;
+
+          @include tablet {
+            font-size: 0.85rem;
+          }
+        }
+      }
+    }
+  }
+}

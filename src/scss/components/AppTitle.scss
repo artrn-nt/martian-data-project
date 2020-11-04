@@ -1,0 +1,165 @@
+@import '../config.scss';
+@import '../media-queries.scss';
+
+.stroked-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  stroke-linecap: square;
+  stroke-width: 1.6px;
+  stroke: $bright;
+  animation: fill-anim-stroked 1.25s cubic-bezier(0.44, 0.73, 0.74, 0.9)
+    forwards 2.5s;
+
+  path:nth-child(1) {
+    stroke-dasharray: 695.0391845703125px;
+    stroke-dashoffset: 695.0391845703125px;
+    animation: stroke-anim 1.2s ease forwards 0.4s;
+  }
+
+  path:nth-child(2) {
+    stroke-dasharray: 416.67742919921875px;
+    stroke-dashoffset: 416.67742919921875px;
+    transform-box: fill-box;
+    transform-origin: 0, 0;
+    animation: stroke-anim 1.2s ease forwards 0.55s,
+      rotate-anim 0.4s cubic-bezier(0.51, 0.29, 0.82, 0.65) forwards 3.4s;
+  }
+
+  path:nth-child(3) {
+    stroke-dashoffset: 252.47076416015625px;
+    stroke-dasharray: 252.47076416015625px;
+    animation: stroke-anim 1.2s ease forwards 0.7s;
+  }
+
+  path:nth-child(4) {
+    stroke-dashoffset: 363.26251220703125px;
+    stroke-dasharray: 363.26251220703125px;
+    animation: stroke-anim 1.2s ease forwards 0.85s;
+  }
+
+  path:nth-child(5) {
+    stroke-dashoffset: 270.00048828125px;
+    stroke-dasharray: 270.00048828125px;
+    animation: stroke-anim 1.2s ease forwards 1s;
+  }
+
+  path:nth-child(6) {
+    stroke-dashoffset: 416.6794738769531px;
+    stroke-dasharray: 416.6794738769531px;
+    transform-box: fill-box;
+    transform-origin: 0, 0;
+    animation: stroke-anim 1.2s ease forwards 1.15s,
+      rotate-anim 0.4s cubic-bezier(0.51, 0.29, 0.82, 0.65) forwards 3.6s;
+  }
+
+  path:nth-child(7) {
+    stroke-dashoffset: 380.2615661621094px;
+    stroke-dasharray: 380.2615661621094px;
+    animation: stroke-anim 1.2s ease forwards 1.3s;
+  }
+}
+
+.splitted-text {
+  position: absolute;
+  top: 15.9px;
+  left: calc(215px + 2rem);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 43.0667px;
+  width: 40px;
+  font-family: $main-font;
+  font-weight: 300;
+  font-size: 1.025rem;
+  letter-spacing: 1px;
+  color: $bright;
+  cursor: default;
+
+  .braces {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    right: 50%;
+    opacity: 0;
+
+    .brace:nth-child(1) {
+      position: absolute;
+      bottom: 0;
+      left: -6px;
+    }
+
+    .brace:nth-child(2) {
+      position: absolute;
+      bottom: 0;
+      right: -6px;
+    }
+  }
+
+  .char:nth-child(2) {
+    opacity: 0;
+    animation: fade-in-anim 0.25s cubic-bezier(0.57, 0.17, 0.74, 1.6) forwards
+      6.35s;
+  }
+  .char:nth-child(3) {
+    opacity: 0;
+    animation: fade-in-anim 0.25s cubic-bezier(0.57, 0.17, 0.74, 1.6) forwards
+      6.55s;
+  }
+  .char:nth-child(4) {
+    opacity: 0;
+    animation: fade-in-anim 0.25s cubic-bezier(0.57, 0.17, 0.74, 1.6) forwards
+      6.75s;
+  }
+  .char:nth-child(5) {
+    opacity: 0;
+    animation: fade-in-anim 0.25s cubic-bezier(0.57, 0.17, 0.74, 1.6) forwards
+      6.95s;
+  }
+}
+
+// Stroked text animations
+@keyframes stroke-anim {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fill-anim-stroked {
+  from {
+    fill: transparent;
+  }
+  to {
+    fill: $app-title-fill;
+  }
+}
+
+@keyframes rotate-anim {
+  0% {
+    transform: rotate(0deg) translate(0, 0);
+    top: 0;
+    left: 0;
+  }
+  100% {
+    transform: rotate(90deg) translate(0, calc(-91.6926px + 12px));
+    top: 0.1em;
+    left: 0.1em;
+  }
+}
+
+// Splitted text animations
+@keyframes fade-in-anim {
+  0% {
+    transform: translate(0, 12px);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(0, -8px);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}

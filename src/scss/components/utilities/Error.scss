@@ -1,0 +1,35 @@
+@import '../../config.scss';
+@import '../../media-queries.scss';
+
+.error-msg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.375rem;
+  font-weight: 300;
+  color: $bright;
+
+  @include breakpoint {
+    font-size: 1.3rem;
+  }
+
+  @include phone {
+    max-width: 335px;
+    font-size: 1.225rem;
+  }
+
+  .line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden;
+
+    span {
+      width: 100%;
+      text-align: center;
+      line-height: 2.45rem;
+    }
+  }
+}

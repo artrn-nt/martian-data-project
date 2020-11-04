@@ -1,0 +1,263 @@
+@import '../../config.scss';
+@import '../../media-queries.scss';
+
+%btn-style {
+  border: 1.4px solid $bright;
+  border-radius: 0.225rem;
+  background-color: transparentize($color: $sec-bg-color, $amount: 0.725);
+
+  font-family: $main-font;
+  color: $bright;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.chart-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0 22px;
+  // background-color: slategrey;
+
+  @include sm-screen {
+    padding: 0 7.3rem;
+  }
+
+  @include breakpoint {
+    align-items: center;
+    padding: 1.05rem 0;
+  }
+
+  .chart-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    @include breakpoint {
+      min-width: 320px;
+    }
+
+    .chart-title-line {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, 0%);
+      margin-top: 0.65rem;
+      width: 295px;
+      height: 33px;
+      overflow: hidden;
+      // background-color: orangered;
+
+      @include tablet {
+        height: 30.5px;
+        margin-top: 0.55rem;
+      }
+
+      @include phone {
+        height: 26.5px;
+        margin-top: 0.425rem;
+      }
+
+      .chart-title {
+        // background-color: steelblue;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        width: 290px;
+        height: 33px;
+        font-size: 21px;
+        color: $bright;
+        font-weight: 300;
+        text-align: center;
+
+        @include tablet {
+          height: 30.5px;
+          font-size: 18.5px;
+        }
+
+        @include phone {
+          height: 26.5px;
+          font-size: 16px;
+        }
+      }
+    }
+
+    canvas {
+      border: 1.4px solid $bright;
+      background-color: transparentize($color: $sec-bg-color, $amount: 0.725);
+      box-shadow: 3px 3px 4px $prim-bg-color;
+      border-radius: 0.3rem;
+      // padding: 0 1.2rem 0.6rem 1.2rem;
+      padding: 0 0.9rem 0.3rem 0.9rem;
+      // min-height: 354px;
+      // max-width: 832px;
+      max-width: 928px;
+      // max-height: 416px;
+      max-height: 464px;
+
+      @include breakpoint {
+        // min-width: unset;
+        // min-height: unset;
+        max-width: 709px;
+        max-height: unset;
+      }
+
+      @include tablet {
+        padding: 0 0.225rem 0.5rem 0.225rem;
+      }
+
+      @include phone {
+        padding: 0 0.225rem 0.175rem 0.225rem;
+      }
+    }
+  }
+
+  .selectors-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 16.825px auto 0 auto;
+    padding: 0 0.6rem;
+    max-width: 928px;
+    // background-color: cadetblue;
+
+    @include breakpoint {
+      width: 709px;
+      min-width: unset;
+      max-width: unset;
+      margin: 1.05rem 0 0 0;
+    }
+
+    @include tablet {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      width: 100%;
+      padding: 0;
+    }
+
+    .param-selectors {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      height: 100%;
+      // background-color: slateblue;
+
+      .param-selector-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        margin-right: 1.2rem;
+        // background-color: orangered;
+
+        .param-selector-at,
+        .param-selector-hws {
+          @extend %btn-style;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 90px;
+          height: 2.1rem;
+          font-size: 0.925rem;
+          transition: transform 200ms ease-in-out, box-shadow 200ms ease-in-out;
+
+          span {
+            padding-bottom: 0.15rem;
+          }
+
+          @include tablet {
+            height: 2.1rem;
+            margin-right: 0;
+          }
+        }
+
+        .unit-selectors-wrap {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+          height: 100%;
+          margin-top: 0.525rem;
+
+          .unit-selector-cel,
+          .unit-selector-far,
+          .unit-selector-kmh,
+          .unit-selector-ms {
+            @extend %btn-style;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.35rem;
+            height: 1.5rem;
+            font-size: 0.75rem;
+            transition: transform 200ms ease-in-out,
+              box-shadow 200ms ease-in-out;
+
+            span {
+              padding-bottom: 0.125rem;
+            }
+          }
+        }
+      }
+
+      .param-selector-pre {
+        @extend %btn-style;
+
+        width: 90px;
+        height: 2.1rem;
+        font-size: 0.925rem;
+        transition: transform 200ms ease-in-out, box-shadow 200ms ease-in-out;
+
+        span {
+          padding-bottom: 0.15rem;
+        }
+      }
+    }
+
+    .value-type-selectors {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      min-width: 145px;
+
+      @include tablet {
+        margin-top: 1.05rem;
+      }
+
+      .av-selector,
+      .mn-selector,
+      .mx-selector {
+        @extend %btn-style;
+
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.3rem;
+        height: 1.5rem;
+        font-size: 0.85rem;
+        box-shadow: 3px 3px 4px $prim-bg-color;
+        transition: transform 50ms ease-in-out, box-shadow 50ms ease-in-out;
+
+        &:active {
+          transform: scale(0.97);
+          box-shadow: 2.5px 2.5px 3px $prim-bg-color;
+        }
+
+        span {
+          padding-bottom: 0.2rem;
+        }
+      }
+    }
+  }
+}
