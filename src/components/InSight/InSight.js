@@ -42,7 +42,8 @@ const InSight = ({ mounted, setMounted }) => {
 
     // Fetching data on mount + Insight container background animation
     useEffect(() => {
-        fetch(`https://api.nasa.gov/insight_weather/?api_key=${process.env.REACT_APP_API_KEY}&feedtype=json&ver=1.0`)
+        // fetch(`https://api.nasa.gov/insight_weather/?api_key=${process.env.REACT_APP_API_KEY}&feedtype=json&ver=1.0`)
+        fetch(`https://api.nasa.gov/insight_weather/?api_key=Hrlm07c329d9awhkb3JOyYzLVvzxLl2XvOSPe7Fe&feedtype=json&ver=1.0`)
             .then(res => res.json())
             .then((res) => {
                 setData(res)
