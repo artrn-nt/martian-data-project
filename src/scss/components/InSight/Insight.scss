@@ -15,6 +15,7 @@
 
   @include lg-screen {
     min-height: 904.4px;
+    // min-height: 943px;
   }
 
   @include md-screen {
@@ -23,6 +24,7 @@
 
   @include sm-screen {
     min-height: 624.4px;
+    // min-height: 663px;
   }
 
   @include breakpoint {

@@ -11,7 +11,7 @@
   width: 100%;
   background-color: $prim-bg-color;
 
-  // @include lg-screen {
-  //   // height: 100%;
-  // }
+  @include breakpoint {
+    height: 100%;
+  }
 }

@@ -137,11 +137,13 @@
 
 @keyframes rotate-anim {
   0% {
+    -webkit-transform: rotate(0deg) translate(0, 0);
     transform: rotate(0deg) translate(0, 0);
     top: 0;
     left: 0;
   }
   100% {
+    -webkit-transform: rotate(90deg) translate(0, calc(-91.6926px + 12px));
     transform: rotate(90deg) translate(0, calc(-91.6926px + 12px));
     top: 0.1em;
     left: 0.1em;
@@ -151,14 +153,17 @@
 // Splitted text animations
 @keyframes fade-in-anim {
   0% {
+    -webkit-transform: translate(0, 12px);
     transform: translate(0, 12px);
     opacity: 0;
   }
   50% {
+    -webkit-transform: translate(0, -8px);
     transform: translate(0, -8px);
     opacity: 1;
   }
   100% {
+    -webkit-transform: translate(0, 0);
     transform: translate(0, 0);
     opacity: 1;
   }
