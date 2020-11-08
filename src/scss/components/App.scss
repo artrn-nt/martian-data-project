@@ -3,15 +3,13 @@
 
 .app {
   display: flex;
-  flex-flow: column;
-  flex-grow: 1;
   align-items: center;
   justify-content: center;
   height: 100vh;
   width: 100%;
   background-color: $prim-bg-color;
 
-  @include breakpoint {
-    height: 100%;
-  }
+  // @include breakpoint {
+  //   height: 100%;
+  // }
 }

@@ -1,6 +1,6 @@
 # mars-web-project
 
-Dynamic and responsive application which fetches data from the NASA Insight API.
+Dynamic and responsive application which fetches data from the NASA Insight API. For now this project is not suited for Safari.
 
 # What I've learnt?
 
