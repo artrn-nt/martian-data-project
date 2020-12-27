@@ -14,14 +14,15 @@ import '../../scss/components/InSight/Insight.scss'
 const InSight = ({ mounted, setMounted }) => {
 
     const size = useWindowSize()
-    const paramState = useParam()
+    const { param: paramState } = useParam()
 
     // Fetched data
     const [data, setData] = useState([])
 
+    // Dealing with an error or the lack of data
     const error = useError()
     const setError = useErrorUpdate()
-    
+
     // Extracted / Processed data
 
     // Dates
@@ -52,8 +53,8 @@ const InSight = ({ mounted, setMounted }) => {
                 setError(true)
             })
 
-        gsap.to(insightContainerRef.current, { duration: 0, delay: 0, css: { visibility: 'visible' }})
-            
+        gsap.to(insightContainerRef.current, { duration: 0, delay: 0, css: { visibility: 'visible' } })
+
         gsap.to(insightContainerRef.current, {
             duration: 1.15,
             delay: 6.975,
@@ -94,6 +95,11 @@ const InSight = ({ mounted, setMounted }) => {
         // const keys = Object.keys(data)
         // const isNoDigit = (key) => !/^\d+$/.test(key)
         // if (keys.every(isNoDigit) && data.length !== 0) setError(true)
+
+        // For missing data
+        if (typeof data['sol_keys'] !== 'undefined' && data['sol_keys'].length === 0) {
+            setError(true)
+        }
 
         const arr = []
         const paramDataArr = Array.of([], [], [])
@@ -145,7 +151,7 @@ const InSight = ({ mounted, setMounted }) => {
         ))
         setPressures(paramDataArr[2].map((obj) => obj !== undefined ? Object.values(obj) : undefined))
 
-    }, [data])
+    }, [data, setError])
 
     // Some methods
     const formatEarthDate = (earthDate) => {
@@ -182,18 +188,18 @@ const InSight = ({ mounted, setMounted }) => {
         return (
             <div className='insight-success-container' ref={insightContainerRef}>
                 <PresentationSection />
-                    <ValueTypeProvider>
-                        <ChartSection
-                            sols={sols}
-                            earthDates={earthDates}
-                            data={passData()}
-                            />
-                    </ValueTypeProvider>
-                    <CardsSection
+                <ValueTypeProvider>
+                    <ChartSection
                         sols={sols}
                         earthDates={earthDates}
                         data={passData()}
                     />
+                </ValueTypeProvider>
+                <CardsSection
+                    sols={sols}
+                    earthDates={earthDates}
+                    data={passData()}
+                />
                 {size.width <= 1225 && <InfoAnchor mounted={mounted} setMounted={setMounted} />}
             </div>
         )

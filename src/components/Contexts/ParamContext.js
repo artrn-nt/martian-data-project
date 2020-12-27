@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useCallback } from 'react'
 
 const ParamContext = React.createContext()
 const ParamUpdateContext = React.createContext()
@@ -13,6 +13,8 @@ const ParamProvider = ({ children }) => {
         isActiveHws: { active: false, unit1: true, unit2: false },
         isActivePre: { active: false }
     })
+
+    const [animationRunning, setAnimationRunning] = useState(false)
 
     const handleParam = (str) => {
         switch (str) {
@@ -73,10 +75,14 @@ const ParamProvider = ({ children }) => {
                 }))
         }
     }
-    
+
+    const handleAnimationRunning = useCallback((bool) => {
+        setAnimationRunning(bool)
+    }, [setAnimationRunning])
+
     return (
-        <ParamContext.Provider value={param}>
-            <ParamUpdateContext.Provider value={handleParam}>
+        <ParamContext.Provider value={{ param, animationRunning }}>
+            <ParamUpdateContext.Provider value={{ handleParam, handleAnimationRunning }}>
                 {children}
             </ParamUpdateContext.Provider>
         </ParamContext.Provider>

@@ -21,17 +21,17 @@ const ParamSelector = styled.button`
 
 const SingleUnitParamSelector = ({ param, classParam, paramStateKey }) => {
 
-    const paramState = useParam()
-    const handleParam = useParamUpdate()
+    const { param: paramState, animationRunning } = useParam()
+    const { handleParam } = useParamUpdate()
 
     return (
         <ParamSelector
             className='param-selector-pre'
-            style={{ 
+            style={{
                 boxShadow: paramState[paramStateKey].active ? '2.5px 2.5px 3px #262221' : '3px 3px 4px #262221',
                 transform: paramState[paramStateKey].active ? 'scale(.97)' : 'scale(1)'
-             }}
-            onClick={() => handleParam(classParam)}
+            }}
+            onClick={() => !animationRunning && handleParam(classParam)}
             opacity={paramState[paramStateKey].active ? '1' : '0'}
         >
             <span>{param}</span>

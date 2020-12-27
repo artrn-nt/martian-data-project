@@ -21,19 +21,19 @@ const ParamSelector = styled.button`
 
 const DoubleUnitParamSelector = ({ param, classParam, units, classUnits, paramStateKey }) => {
 
-    const paramState = useParam()
-    const handleParam = useParamUpdate()
+    const { param: paramState, animationRunning } = useParam()
+    const { handleParam } = useParamUpdate()
 
     return (
         <div className="param-selector-wrap">
 
             <ParamSelector
                 className={`param-selector-${classParam}`}
-                style={{ 
+                style={{
                     transform: paramState[paramStateKey].active ? 'scale(.97)' : 'scale(1)',
                     boxShadow: paramState[paramStateKey].active ? '2.5px 2.5px 3px #262221' : '3px 3px 4px #262221'
                 }}
-                onClick={() => handleParam(classParam)}
+                onClick={() => !animationRunning && handleParam(classParam)}
                 opacity={paramState[paramStateKey].active ? '1' : '0'}
             >
                 <span>{param}</span>
@@ -43,11 +43,11 @@ const DoubleUnitParamSelector = ({ param, classParam, units, classUnits, paramSt
 
                 <button
                     className={`unit-selector-${classUnits[0]}`}
-                    style={{ 
+                    style={{
                         transform: paramState[paramStateKey].active && paramState[paramStateKey].unit1 ? 'scale(.97)' : 'scale(1)',
                         boxShadow: paramState[paramStateKey].active && paramState[paramStateKey].unit1 ? '2.5px 2.5px 3px #262221' : '3px 3px 4px #262221'
                     }}
-                    onClick={() => handleParam(classUnits[0])}
+                    onClick={() => !animationRunning && handleParam(classUnits[0])}
                 >
                     <span>{units[0]}</span>
                 </button>
@@ -58,7 +58,7 @@ const DoubleUnitParamSelector = ({ param, classParam, units, classUnits, paramSt
                         transform: paramState[paramStateKey].active && paramState[paramStateKey].unit2 ? 'scale(.97)' : 'scale(1)',
                         boxShadow: paramState[paramStateKey].active && paramState[paramStateKey].unit2 ? '2.5px 2.5px 3px #262221' : '3px 3px 4px #262221'
                     }}
-                    onClick={() => handleParam(classUnits[1])}
+                    onClick={() => !animationRunning && handleParam(classUnits[1])}
                 >
                     <span>{units[1]}</span>
                 </button>
